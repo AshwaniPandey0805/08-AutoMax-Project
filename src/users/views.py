@@ -1,7 +1,19 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate
 
 def login_view(request):
-    login_form  = AuthenticationForm()
+    if request.method == 'POST':
+        login_form = AuthenticationForm(request=request, data = request.POST)
+        if login_form.is_valid():
+            username = login_form.cleaned_data.get('username')
+            password  = login_form.cleaned_data.get('passsword')
+            user = authenticate( username = username, password = password)
+            if user is not None:
+                pass
+            else:
+                pass
+    elif request.method ==  'GET':  
+        login_form  = AuthenticationForm()
     return render(request, 'views/login.html', {'login_form' : login_form} )
