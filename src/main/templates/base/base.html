@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Hussain Mustafa, Preneure">
+        {% block 'title'  %}
+        <title>Auto . List Your Car Today</title>
+        {% endblock  %}
+
         <!-- Bootstrap core CSS-->
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <!--Custom style CSS-->
@@ -12,6 +16,20 @@
     </head> 
 
     <body>
+        {% if messages %}
+            {% for messages in messages  %}
+                <div {% if message.tags %} class="alert alert-{{ message.tags }}"  {% endif %} >
+                    {{messages}}
+                    {{message.tags}}
+                </div>
+            {% endfor %}
+              
+            {% endfor %}
+        {% endif %}
+          
+        {% endif %}
+          
+        {% endif %}
         {% block 'body' %}
           
         {% endblock  %}
